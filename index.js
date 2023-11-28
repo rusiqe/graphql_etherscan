@@ -23,6 +23,10 @@ const resolvers = {
         `?module=gastracker&action=gasestimate&gasprice=2000000000&apikey=${process.env.ETHERSCAN_API}`
       );
     }
+    getEthPrice: (root, _args, { dataSources }) =>
+    dataSources.ethDataSource.getLatestEthereumPrice(),
+    getEstimationTimePerTransaction: (root, _args, { dataSources }) =>
+    dataSources.ethDataSource.getBlockConfirmationTime(),
   },
 };
 
