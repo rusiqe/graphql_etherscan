@@ -11,7 +11,18 @@ const resolvers = {
       dataSources.ethDataSource.etherBalanceByAddress(),
     getTotalSupplyEth: (root, _args, { dataSources }) =>
       dataSources.ethDataSource.totalSupplyOfEther(),
-    //Paste Code for New Resolver Functions
+    //Code for New Resolver Functions
+    async getLatestEthereumPrice() {
+      return this.get(
+        `?module=stats&action=ethprice&apikey=${process.env.ETHERSCAN_API}`
+      );
+    }
+  
+    async getBlockConfirmationTime() {
+      return this.get(
+        `?module=gastracker&action=gasestimate&gasprice=2000000000&apikey=${process.env.ETHERSCAN_API}`
+      );
+    }
   },
 };
 
