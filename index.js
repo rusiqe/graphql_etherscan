@@ -16,17 +16,18 @@ const resolvers = {
       return this.get(
         `?module=stats&action=ethprice&apikey=${process.env.ETHERSCAN_API}`
       );
-    }
-  
+    },
+
     async getBlockConfirmationTime() {
       return this.get(
         `?module=gastracker&action=gasestimate&gasprice=2000000000&apikey=${process.env.ETHERSCAN_API}`
       );
-    }
+    },
+
     getEthPrice: (root, _args, { dataSources }) =>
-    dataSources.ethDataSource.getLatestEthereumPrice(),
+      dataSources.ethDataSource.getLatestEthereumPrice(),
     getEstimationTimePerTransaction: (root, _args, { dataSources }) =>
-    dataSources.ethDataSource.getBlockConfirmationTime(),
+      dataSources.ethDataSource.getBlockConfirmationTime(),
   },
 };
 
@@ -38,7 +39,6 @@ const server = new ApolloServer({
   }),
 });
 
-server.timeout = 0;
 server.listen("9000").then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`🚀 Server ready at ${url}`)
 });
