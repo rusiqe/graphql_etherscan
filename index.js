@@ -12,18 +12,6 @@ const resolvers = {
     getTotalSupplyEth: (root, _args, { dataSources }) =>
       dataSources.ethDataSource.totalSupplyOfEther(),
     //Code for New Resolver Functions
-    async getLatestEthereumPrice() {
-      return this.get(
-        `?module=stats&action=ethprice&apikey=${process.env.ETHERSCAN_API}`
-      );
-    },
-
-    async getBlockConfirmationTime() {
-      return this.get(
-        `?module=gastracker&action=gasestimate&gasprice=2000000000&apikey=${process.env.ETHERSCAN_API}`
-      );
-    },
-
     getEthPrice: (root, _args, { dataSources }) =>
       dataSources.ethDataSource.getLatestEthereumPrice(),
     getEstimationTimePerTransaction: (root, _args, { dataSources }) =>

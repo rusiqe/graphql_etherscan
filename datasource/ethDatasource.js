@@ -23,6 +23,17 @@ class EtherDataSource extends RESTDataSource {
   }
 
   //Paste Code Here For New API Endpoints
+  async getLatestEthereumPrice() {
+    return this.get(
+      `?module=stats&action=ethprice&apikey=${process.env.ETHERSCAN_API}`
+    );
+  }
+
+  async getBlockConfirmationTime() {
+    return this.get(
+      `?module=gastracker&action=gasestimate&gasprice=2000000000&apikey=${process.env.ETHERSCAN_API}`
+    );
+  }
 }
 
 module.exports = EtherDataSource;
